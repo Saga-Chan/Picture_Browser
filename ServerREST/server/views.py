@@ -31,7 +31,7 @@ class ServerList(APIView):
             errors = serializer.errors
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)"""
             image = request.data
-            print(image)
+            #print(image)
         return Response('Récupération image OK', status=status.HTTP_201_CREATED)
 
 class ServerListDetail(APIView):
