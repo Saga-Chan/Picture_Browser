@@ -9,7 +9,7 @@ from sklearn import preprocessing
 import math
 
 # Get the training classes names and store them in a list
-train_path = "/home/decanter/PycharmProjects/ComputerVision/venv/retriever/dataset-retr/train/"
+train_path = "/home/decanter/PycharmProjects/Picture_Browser/ServerREST/traitement/retriever/dataset-retr/train"
 
 training_names = os.listdir(train_path)
 

@@ -13,7 +13,7 @@ from PIL import Image
 
 
 # Get query image path
-image_path = "/home/decanter/PycharmProjects/ComputerVision/venv/retriever/dataset-retr/train/ukbench00000.jpg"
+image_path = "/home/decanter/PycharmProjects/Picture_Browser/ServerREST/traitement/retriever/dataset-retr/train/ukbench00000.jpg"
 
 # Load the classifier, class names, scaler, number of clusters and vocabulary
 im_features, image_paths, idf, numWords, voc = joblib.load("bof_retr.pkl")
