@@ -23,13 +23,14 @@ class ServerList(APIView):
     def post(self, request, format=None):
         errors = {"error": "body must not be empty"}
         if len(request.data) is not 0:
-            serializer = ImageSearchSerializer(data=request.data)
+            """serializer = ImageSearchSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save()
                 response = Response(serializer.data, status=status.HTTP_201_CREATED)
                 return response
             errors = serializer.errors
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)"""
+            image = request.data['base64']
 
 
 class ServerListDetail(APIView):
