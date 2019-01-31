@@ -1,0 +1,56 @@
+{
+    "brands": [
+        {
+            "brandname": "Coca Cola",
+            "url": "https://www.cocacola.fr/fr/home/",
+            "classifier": "Coca.xml",
+            "images": [
+                "coca_1.jpg",
+                "coca_2.jpg",
+                "coca_3.jpg",
+                "coca_4.jpg",
+                "coca_5.jpg",
+                "coca_6.jpg",
+                "coca_7.jpg",
+                "coca_8.jpg"
+            ]
+        },
+        {
+            "brandname": "Dr Pepper",
+            "url": "https://www.drpepper.com/en",
+            "classifier": "DrPepper.xml",
+            "images": [
+                "dr_peper_1.jpg",
+                "dr_peper_2.jpg",
+                "dr_peper_3.jpg",
+                "dr_peper_4.jpg",
+                "dr_peper_5.jpg"
+            ]
+        },
+        {
+            "brandname": "Pepsi",
+            "url": "https://pepsi.fr/",
+            "classifier": "Pepsi.xml",
+            "images": [
+                "pepsi_1.jpg",
+                "pepsi_2.jpg",
+                "pepsi_3.jpg",
+                "pepsi_4.jpg"
+            ]
+        },
+        {
+            "brandname": "Canada Dry",
+            "url": "http://www.canadadry.fr/",
+            "classifier": "CanadaDry.xml",
+            "images": [
+                "canada_dry_1.jpg",
+                "canada_dry_2.jpg",
+                "canada_dry_3.jpg",
+                "canada_dry_4.jpg",
+                "canada_dry_5.jpg",
+                "canada_dry_6.jpg"
+            ]
+        }
+    ],
+    "vocabulary": "vocabulary.yml"
+}
