@@ -46,9 +46,155 @@
                 "canada_dry_1.jpg",
                 "canada_dry_2.jpg",
                 "canada_dry_3.jpg",
-                "canada_dry_4.jpg",
+                "canada_dry_4.png",
                 "canada_dry_5.jpg",
                 "canada_dry_6.jpg"
+            ]
+        },
+        {
+            "brandname": "Reese's",
+            "url": "https://shop.reeses.com/",
+            "classifier": "Reeses.xml",
+            "images": [
+                "reeses_1.jpg",
+                "reeses_2.jpg",
+                "reeses_3.jpg",
+                "reeses_4.jpg"
+            ]
+        },
+        {
+            "brandname": "Cadbury",
+            "url": "https://www.cadbury.co.uk/",
+            "classifier": "Cadbury.xml",
+            "images": [
+                "cadbury_1.jpg",
+                "cadbury_2.jpg",
+                "cadbury_3.jpg",
+                "cadbury_4.png",
+                "cadbury_5.jpg",
+                "cadbury_6.jpg"
+            ]
+        },
+        {
+            "brandname": "Wonka (Nerds)",
+            "url": "https://www.myamericanmarket.com/fr/",
+            "classifier": "Nerds.xml",
+            "images": [
+                "wonka_nerds_1.jpg",
+                "wonka_nerds_2.jpg",
+                "wonka_nerds_3.jpg",
+                "wonka_nerds_4.png",
+                "wonka_nerds_5.jpg"
+            ]
+        },
+        {
+            "brandname": "Nutella",
+            "url": "https://www.nutella.com/fr/fr",
+            "classifier": "Nutella.xml",
+            "images": [
+                "nutella_1.png",
+                "nutella_2.jpg",
+                "nutella_3.jpg",
+                "nutella_4.jpg",
+                "nutella_5.jpg"
+            ]
+        },
+        {
+            "brandname": "Pringles",
+            "url": "https://www.pringles.com/fr/home.html",
+            "classifier": "Pringles.xml",
+            "images": [
+                "pringles_1.png",
+                "pringles_2.jpg",
+                "pringles_3.jpg",
+                "pringles_4.jpg"
+            ]
+        },
+        {
+            "brandname": "Doritos",
+            "url": "https://www.doritos.com/",
+            "classifier": "Doritos.xml",
+            "images": [
+                "doritos_1.jpg",
+                "doritos_2.jpg",
+                "doritos_3.jpg",
+                "doritos_4.jpg",
+                "doritos_5.jpg",
+                "doritos_6.jpg"
+            ]
+        },
+        {
+            "brandname": "Saucisson Justin Bridoux",
+            "url": "https://www.justinbridou.fr/",
+            "classifier": "Saucisson.xml",
+            "images": [
+                "saucisson_1.png",
+                "saucisson_2.jpg",
+                "saucisson_3.png",
+                "saucisson_4.png",
+                "saucisson_5.png"
+            ]
+        },
+        {
+            "brandname": "Monster Munch",
+            "url": "http://www.vico.fr/?brand=monster-munch",
+            "classifier": "MonsterMunch.xml",
+            "images": [
+                "monster_munch_1.jpg",
+                "monster_munch_2.png",
+                "monster_munch_3.jpg",
+                "monster_munch_4.jpg",
+                "monster_munch_5.jpg"
+            ]
+        },
+        {
+            "brandname": "Chaise",
+            "url": "https://fr.wikipedia.org/wiki/Chaise",
+            "classifier": "Chaise.xml",
+            "images": [
+                "chaise_1.jpg",
+                "chaise_2.jpg",
+                "chaise_3.jpg",
+                "chaise_4.jpg",
+                "chaise_5.jpg",
+                "chaise_6.jpg"
+            ]
+        },
+        {
+            "brandname": "Table",
+            "url": "https://fr.wikipedia.org/wiki/Table",
+            "classifier": "Table.xml",
+            "images": [
+                "table_1.jpg",
+                "table_2.jpg",
+                "table_3.jpg",
+                "table_4.jpg",
+                "table_5.jpg",
+                "table_6.jpg"
+            ]
+        },
+        {
+            "brandname": "Alienware",
+            "url": "https://www.dell.com/en-us/gaming/alienware",
+            "classifier": "AlienWare.xml",
+            "images": [
+                "alienware_1.png",
+                "alienware_2.jpg",
+                "alienware_3.png",
+                "alienware_4.png",
+                "alienware_5.png"
+            ]
+        },
+        {
+            "brandname": "Harry Potter",
+            "url": "https://wizardingworld.warnerbros.fr/",
+            "classifier": "HarryPotter.xml",
+            "images": [
+                "harry_potter_1.jpg",
+                "harry_potter_2.png",
+                "harry_potter_3.png",
+                "harry_potter_4.png",
+                "harry_potter_5.jpg"
             ]
         }
     ],
