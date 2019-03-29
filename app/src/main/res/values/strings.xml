@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Picture_Browser</string>
+    <string name="pic_this">Pic\' This !</string>
+    <string name="todo">TODO</string>
+</resources>

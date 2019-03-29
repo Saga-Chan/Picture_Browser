@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@drawable/fond_vert"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.android.com/apk/res-auto ">
+
+    <SurfaceView
+        android:id="@+id/surfaceViewCamera"
+        android:layout_width="414dp"
+        android:layout_height="447dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <Button
+        android:id="@+id/btn_scan_keep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="KEEP"
+        android:textColor="@color/colorPrimary"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="610dp" />
+
+    <Button
+        android:id="@+id/btn_scan_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="SKIP"
+        android:textColor="@color/colorPrimary"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="238dp"
+        tools:layout_editor_absoluteY="610dp" />
+
+    <Button
+        android:id="@+id/btn_scan_scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="TAKE YOUR PICTURE"
+        android:textColor="@color/colorPrimary"
+        tools:layout_editor_absoluteX="126dp"
+        tools:layout_editor_absoluteY="610dp" />
+</android.support.constraint.ConstraintLayout>
