@@ -15,3 +15,4 @@ class ImageSearch(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     client = models.CharField(max_length=100)
     response = models.ForeignKey(ResponseServer, on_delete=models.CASCADE)
+
