@@ -1,4 +1,4 @@
-package com.example.louis.picture_browser;
+package com.example.picture_browser_imt;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.louis.picture_browser", appContext.getPackageName());
+        assertEquals("com.example.picture_browser_imt", appContext.getPackageName());
     }
 }

@@ -1,4 +1,4 @@
-package com.example.louis.picture_browser;
+package com.example.picture_browser_imt;
 
 import org.junit.Test;
 
