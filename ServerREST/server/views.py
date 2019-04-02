@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-
-
 # Create your views here.
 
 from rest_framework import status
@@ -51,10 +49,11 @@ class ServerList(APIView):
                 img_type = 'jpg'
             image_path = buildAndReturnLabel(i64, img_type)
 
-            indexing()
-            online_search()
+            t = online_search()
+            print(t)
 
         return Response('Récupération image OK', status=status.HTTP_201_CREATED)
+
 
 class ServerListDetail(APIView):
 
