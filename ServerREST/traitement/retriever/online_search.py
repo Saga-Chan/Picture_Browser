@@ -44,6 +44,7 @@ test_features = preprocessing.normalize(test_features, norm='l2')
 
 score = np.dot(test_features, im_features.T)
 rank_ID = np.argsort(-score)
+print(score)
 
 # Visualize the results
 figure()
@@ -52,10 +53,10 @@ subplot(5, 4, 1)
 imshow(im[:, :, ::-1])
 axis('off')
 for i, ID in enumerate(rank_ID[0][0:16]):
-    img = Image.open(image_paths[ID])
-    # gray()
-    subplot(5, 4, i + 5)
-    imshow(img)
-    axis('off')
-
+    if (score[0][i] > 0.7):
+        img = Image.open(image_paths[ID])
+        # gray()
+        subplot(5, 4, i + 5)
+        imshow(img)
+        axis('off')
 show()

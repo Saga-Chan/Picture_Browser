@@ -10,7 +10,7 @@ from server.models import ImageSearch
 class ImageSearchSerializer(serializers.ModelSerializer):
     class Meta:
         model = ImageSearch
-        fields = ('date', 'client', 'response', 'score')
+        fields = ('id', 'date', 'client', 'response', 'score')
 
 
 
