@@ -15,7 +15,9 @@ from server.serializers import ImageSearchSerializer
 
 from traitement.decode import buildAndReturnLabel
 
+from traitement.retriever.indexing import indexing
 
+from traitement.retriever.online_search import online_search
 
 
 class ServerList(APIView):
@@ -48,6 +50,9 @@ class ServerList(APIView):
             else:
                 img_type = 'jpg'
             image_path = buildAndReturnLabel(i64, img_type)
+
+            indexing()
+            online_search()
 
         return Response('Récupération image OK', status=status.HTTP_201_CREATED)
 
