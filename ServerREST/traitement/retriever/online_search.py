@@ -53,17 +53,17 @@ def online_search():
     subplot(5, 4, 1)
     imshow(im[:, :, ::-1])
     axis('off')
-    res = {}
+    res=[]
     for i, ID in enumerate(rank_ID[0][0:16]):
-        if (score[0][i] > 0.7):
-            img = Image.open(image_paths[ID])
+        if (score[0][i] > 0.70):
+            """img = Image.open(image_paths[ID])
             # gray()
             subplot(5, 4, i + 5)
             imshow(img)
-            axis('off')
-
-            res.update({image_paths[ID]: score[0][i]})
-    show()
+            axis('off')"""
+            res.append((image_paths[ID], score[0][i]))
+            #res.update({image_paths[ID]: score[0][i]})
+    #show()
 
 
     return res

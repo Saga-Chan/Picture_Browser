@@ -7,12 +7,12 @@ from django.db import models
 # Create your models here.
 
 class ResponseServer(models.Model):
-    result = models.URLField()
+    result = models.CharField(max_length=5000)
     score = models.DecimalField(decimal_places=2, max_digits=10)
 
 
 class ImageSearch(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     client = models.CharField(max_length=100)
-    response = models.ForeignKey(ResponseServer, on_delete=models.CASCADE)
+    response = models.ManyToManyField('ResponseServer')
 
