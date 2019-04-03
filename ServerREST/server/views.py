@@ -79,7 +79,13 @@ class ServerList(APIView):
 def get_img(request):
     img = request.GET['image']
     print(img)
-    return Response("Reponse reçue", status=status.HTTP_200_OK)
+    res = ImageSearch.objects.get(id=img)
+    data = res.get_data()
+    print(json.dumps(data, indent=4))
+    #print(res.response.score)
+
+
+    return Response(json.dumps(data), status=status.HTTP_200_OK)
 
 
 class ServerListDetail(APIView):
