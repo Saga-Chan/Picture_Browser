@@ -21,7 +21,8 @@ from server import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^LogoSearch', views.ServerList.as_view()),
+    url(r'^LogoSearch/$', views.ServerList.as_view()),
+    url(r'^LogoSearch/getimg/$', views.get_img),
 ]
 
 

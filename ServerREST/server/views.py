@@ -6,6 +6,7 @@ import datetime
 import decimal
 
 from rest_framework import status
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.utils import json
 from rest_framework.views import APIView
@@ -69,15 +70,21 @@ class ServerList(APIView):
 
             print(img1)
 
-            return Response('Traitement image OK', status=status.HTTP_201_CREATED)
+            return Response(img1.id, status=status.HTTP_201_CREATED)
 
         return Response("Bad request", status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['GET'])
+def get_img(request):
+    img = request.GET['image']
+    print(img)
+    return Response("Reponse reçue", status=status.HTTP_200_OK)
+
 
 class ServerListDetail(APIView):
 
-    def get(self, request, pk, format=None):
-        serv = self.get_object(pk)
-        serializer = ImageSearchSerializer(serv)
-        return Response(serializer.data)
+    def get(self, **kwargs):
+        img = ImageSearch.objects.get(id=kwargs['img_id'])
+        #print(img)
+        return Response("Reponse reçue", status=status.HTTP_200_OK)
