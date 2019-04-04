@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <uses-feature android:name="android.hardware.Camera" />
 
@@ -23,6 +24,8 @@
         </activity>
 
         <activity android:name=".TakePicture" />
+        <activity android:name=".Gallery" />
+        <activity android:name=".SearchPage"/>
     </application>
 
 </manifest>

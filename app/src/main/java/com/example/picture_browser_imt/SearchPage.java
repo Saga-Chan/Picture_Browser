@@ -1,58 +1,34 @@
 package com.example.picture_browser_imt;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.Base64;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.io.ByteArrayOutputStream;
-
 public class SearchPage extends Gallery {
 
-    TextView textView;
-    Bitmap bitmap;
+    String logo;
+    int proba;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_page);
 
-        textView = (TextView) findViewById(R.id.information);
-        bitmap = (Bitmap) BitmapFactory.decodeResource(getResources(), MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        Bitmap bmp;
+        TextView textView = findViewById(R.id.information);
+        ImageView answerLogo = findViewById(R.id.answerLogo);
+        ImageView proposal1 = findViewById(R.id.proposal1);
+        ImageView proposal2 = findViewById(R.id.proposal2);
+        ImageView proposal3 = findViewById(R.id.proposal3);
+        Bundle extras = getIntent().getExtras();
 
-        new AsyncTask<Void, Void, String>(){
-            @Override
-            protected String doInBackground(Void... voids) {
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                byte[] b = baos.toByteArray();
+        String information="L'image correspond à : %s avec une probabilité de %i", logo, proba;
+        textView.setText(information);
 
-                String encodeImage = Base64.encodeToString(b, Base64.DEFAULT);
-
-                return encodeImage;
-            }
-
-            @Override
-            protected void onPostExecute(String s){
-                textView.setError(s);
-            }
-        }.execute();
-/**
-        Intent i = getIntent();
-
-        int position = i.getExtras().getInt("id");
-        ImageAdapter adapter = new ImageAdapter(this);
-
-        ImageView imageView = findViewById(R.id.answerLogo);
-        imageView.setImageResource(adapter.images[position]);
- **/
+        byte[] byteArray = extras.getByteArray("image");
+        bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        answerLogo.setImageBitmap(bmp);
     }
-
 }

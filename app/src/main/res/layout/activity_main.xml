@@ -10,17 +10,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
 
         <TextView
-            android:id="@+id/application_title"
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:gravity="center"
             android:text="@string/pic_this"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorFontPictureBrowser"
             android:textSize="24sp"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="160dp"
@@ -59,14 +60,14 @@
             tools:srcCompat="@drawable/logo" />
 
         <Button
-            android:id="@+id/photo_layout"
+            android:id="@+id/photoLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:background="@color/colorAccent"
+            android:background="@color/colorFontPictureBrowser"
             android:text="Take photo"
             android:textColor="?attr/colorBackgroundFloating"
             app:layout_constraintEnd_toEndOf="parent"
@@ -76,13 +77,13 @@
             tools:layout_editor_absoluteY="605dp" />
 
         <Button
-            android:id="@+id/gallery_layout"
+            android:id="@+id/galleryLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:background="@color/colorAccent"
+            android:background="@color/colorFontPictureBrowser"
             android:text="See gallery"
             android:textColor="?attr/colorBackgroundFloating"
             app:layout_constraintEnd_toEndOf="parent"

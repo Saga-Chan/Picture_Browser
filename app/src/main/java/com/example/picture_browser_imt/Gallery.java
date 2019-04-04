@@ -1,26 +1,22 @@
 package com.example.picture_browser_imt;
 
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.provider.OpenableColumns;
+import android.util.Base64;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.ByteArrayOutputStream;
 
 public class Gallery extends TakePicture {
 
+    Button pickImage;
+    Button analyze;
     ImageView imageGallery;
     Uri imageUri;
     private static final int PICK_IMAGE=100;
@@ -30,98 +26,39 @@ public class Gallery extends TakePicture {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gallery);
 
-        this.openGallery();
-/**
-        galleryGrid.setAdapter(new ImageAdapter(this));
+        imageGallery = findViewById(R.id.imageGallery);
+        pickImage = findViewById(R.id.pickImage);
+        analyze = findViewById(R.id.analyze);
 
-        galleryGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                Toast.makeText(Gallery.this, "" + position, Toast.LENGTH_SHORT).show();
-            }
+        pickImage.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               openGallery();
+           }
         });
- **/
-    }
-/**
-    public void pickImage(View v){
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Image"), 101);
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 101 && resultCode == RESULT_OK && data!=null){
-            Uri uri = data.getData();
+        analyze.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Bitmap bitmap = ((BitmapDrawable) imageGallery.getDrawable()).getBitmap();
+                CharSequence base64String = ImageToBase64(bitmap);
+                CharSequence newBase64 = "data:image/jpeg:base64,/9j/"+base64String;
+               System.out.println(newBase64);
+               Intent search_intent = new Intent(Gallery.this, SearchPage.class);
 
-            String path = getRealPathFromUri(this, uri);
-            String name = getFileName(uri);
+               ByteArrayOutputStream bStream = new ByteArrayOutputStream();
+               Bitmap bitmap2 = ((BitmapDrawable) imageGallery.getDrawable()).getBitmap();
+               bitmap2.compress(Bitmap.CompressFormat.PNG, 100, bStream);
+               byte[] byteArray = bStream.toByteArray();
+               System.out.println(byteArray);
+               search_intent.putExtra("image", byteArray);
 
-            try {
-                insertInPrivateStorage(name, path);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+
+
+               startActivity(search_intent);
+           }
+        });
     }
-
-    private void insertInPrivateStorage(String name, String path) throws IOException {
-        FileOutputStream fos = openFileOutput(name, MODE_APPEND);
-        File file = new File(path);
-        byte[] bytes = getBytesFromFile(file);
-        fos.write(bytes);
-        fos.close();
-        Toast.makeText(getApplicationContext(), "File saved in : "+getFilesDir() + "/"+name, Toast.LENGTH_SHORT).show();
-    }
-
-    private byte[] getBytesFromFile(File file) throws IOException {
-        byte[] data = FileUtils.ReadFileToByteArray(file);
-        return data;
-    }
-
-    private String getFileName(Uri uri) {
-        String result = null;
-        if (uri.getScheme().equals("content")){
-            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
-            try {
-                if (cursor != null && cursor.moveToFirst()){
-                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
-                }
-            } finally {
-                cursor.close();
-            }
-        }
-        if (result == null){
-            result = uri.getPath();
-            int cut = result.lastIndexOf('/');
-            if (cut != -1){
-                result = result.substring(cut + 1);
-            }
-        }
-        return result;
-    }
-
-    private String getRealPathFromUri(Context context, Uri uri) {
-        String proj = (MediaStore.Images.Media.DATA);
-        Cursor cursor = context.getContentResolver().query(uri, new String[]{proj}, null, null, null);
-        if (cursor != null){
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            cursor.moveToFirst();
-            return cursor.getString(column_index);
-        }
-        return null;
-    }
-
-    private static class FileUtils {
-        public static byte[] ReadFileToByteArray(File file) {
-            return null;
-        }
-    }
-    **/
 
     private void openGallery(){
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -131,9 +68,17 @@ public class Gallery extends TakePicture {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE){
+        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
             imageUri = data.getData();
             imageGallery.setImageURI(imageUri);
         }
+    }
+
+    private CharSequence ImageToBase64 (Bitmap bitmap){
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream .toByteArray();
+        CharSequence encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
+        return encoded;
     }
 }
