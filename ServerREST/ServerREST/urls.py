@@ -22,7 +22,7 @@ from server import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^LogoSearch/$', views.ServerList.as_view()),
-    url(r'^LogoSearch/getimg/$', views.get_img),
+    url(r'^LogoSearch/GetImage/$', views.get_img),
 ]
 
 

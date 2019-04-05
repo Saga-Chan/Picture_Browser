@@ -26,25 +26,15 @@ from server.models import ResponseServer
 
 class ServerList(APIView):
 
-    def get(self, request, format=None):
+    """def get(self, request, format=None):
         serv = ImageSearch.objects.all()
         serializer = ImageSearchSerializer(serv)
-        return Response(serializer.data)
+        return Response(serializer.data)"""
 
     def post(self, request, format=None):
         errors = {"error": "body must not be empty"}
         if len(request.data) is not 0:
 
-            """serializer = PostImageSerializer(data=request.data)
-            if serializer.is_valid():
-                serializer.save()"""
-            """serializer = ImageSearchSerializer(data=request.data)            #print(image)
-            if serializer.is_valid():
-                serializer.save()
-                response = Response(serializer.data, status=status.HTTP_201_CREATED)
-                return response
-            errors = serializer.errors
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)"""
             image_64 = request.data["base64"]
             i64 = image_64.split(',')[1]
             type = image_64.split(',')[0]
@@ -77,20 +67,18 @@ class ServerList(APIView):
 
 @api_view(['GET'])
 def get_img(request):
-    img = request.GET['image']
+    img = request.GET['search_id']
     print(img)
     res = ImageSearch.objects.get(id=img)
     data = res.get_data()
-    print(json.dumps(data, indent=4))
-    #print(res.response.score)
-
 
     return Response(json.dumps(data), status=status.HTTP_200_OK)
 
-
+"""
 class ServerListDetail(APIView):
 
     def get(self, **kwargs):
         img = ImageSearch.objects.get(id=kwargs['img_id'])
         #print(img)
         return Response("Reponse reçue", status=status.HTTP_200_OK)
+"""
