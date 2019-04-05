@@ -15,3 +15,4 @@ class ResponseSerializer(serializers.ModelSerializer):
     class Meta:
         model = ResponseServer
         fields = ('id', 'result', 'score')
+
