@@ -1,6 +1,5 @@
 import base64
 import io
-import uuid
 
 from PIL import Image
 
