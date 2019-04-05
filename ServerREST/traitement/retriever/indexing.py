@@ -73,3 +73,5 @@ def indexing():
     joblib.dump((im_features, image_paths, idf, numWords, voc), "bof_retr.pkl", compress=3)
 
     return "Indexing OK"
+
+indexing()

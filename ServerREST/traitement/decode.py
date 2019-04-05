@@ -19,10 +19,10 @@ def buildAndReturnLabel(base64i, typeimg):
 
     img = Image.open(io.BytesIO(received))  # on ouvre l'image pour la traiter
     if "png" in infos:  # on l'enregistre dans le format correspondant a typeimg
-        imgConstruite = "/home/decanter/PycharmProjects/Picture_Browser/ServerREST/traitement/retriever/dataset-retr/temp/test.png"
+        imgConstruite = "/home/decanter/PycharmProjects/Picture_Browser/ServerREST/test.png"
         img.save(imgConstruite)
     else:
-        imgConstruite = "/home/decanter/PycharmProjects/Picture_Browser/ServerREST/traitement/retriever/dataset-retr/temp/test.jpg"
+        imgConstruite = "/home/decanter/PycharmProjects/Picture_Browser/ServerREST/test.jpg"
         img.save(imgConstruite)
 
     return imgConstruite  # on la retourne
