@@ -42,7 +42,7 @@ public class TakePicture extends MainActivity {
     private String getPictureName() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmSS");
         String timeStamp = sdf.format(new Date());
-        return "Plane place image"+timeStamp+".jpg";
+        return "IMT_Browser_"+timeStamp+".jpg";
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data){

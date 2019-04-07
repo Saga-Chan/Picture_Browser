@@ -1,70 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:weightSum="9">
 
-    <SurfaceView
-        android:id="@+id/sViewCamera"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="8dp"
-        android:gravity="start"
-        android:orientation="vertical"
-        android:padding="2dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
-
-        <Button
-            android:id="@+id/gallery"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_marginHorizontal="200dp"
-            android:background="@color/colorFontPictureBrowser"
-            android:foregroundGravity="top"
-            android:padding="0dp"
-            android:text="@string/search_in_gallery"
-            android:textColor="?attr/colorBackgroundFloating"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="667dp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
 
-        <ImageView
-            android:id="@+id/imgViewCam"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:padding="128dp"
-            android:visibility="invisible"
-            app:srcCompat="@android:drawable/ic_menu_camera" />
+            <TextView
+                android:id="@+id/initialPicText"
+                android:layout_weight="1"
+                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:text="Image to compare :"
+                android:gravity="center"
+                />
+            <ImageView
+                android:id="@+id/initialPic"
+                android:layout_width="350dp"
+                android:layout_height="400dp" />
 
-        <Button
-            android:id="@+id/capture"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_marginHorizontal="200dp"
-            android:background="@color/colorFontPictureBrowser"
-            android:text="Capture"
-            android:textColor="?attr/colorBackgroundFloating"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="602dp" />
+            <TextView
+                android:id="@+id/responsePicText"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="PAS UTILISE !!!"
+                android:textColor="@color/colorAccent"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="350dp"
+                android:layout_height="400dp"
+                android:layout_marginTop="40dp"/>
+            <TextView
+                android:id="@+id/textDetails"
+                android:layout_weight="1"
+                android:layout_height="70dp"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:text="Image Details: "
+                />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-    </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+                <Button
+                    android:id="@+id/previousPic"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:textColor="@android:color/white"
+                    android:text="Previous Picture"
+                    />
+
+                <Button
+                    android:id="@+id/nextPic"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:text="Next Picture"
+                    android:textColor="@android:color/white" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
