@@ -5,10 +5,20 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import static com.loopj.android.http.AsyncHttpClient.log;
 
 public class SearchPage extends Gallery {
 
@@ -16,6 +26,43 @@ public class SearchPage extends Gallery {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_page);
+        Bundle extras = getIntent().getExtras();
+        String newString = extras.getString("response");
+        JSONArray responseJson;
+        ArrayList<String> responseList = new ArrayList<>();
+        Button previousPic = findViewById(R.id.previousPic);
+        Button nextPic = findViewById(R.id.nextPic);
+
+        //previousPic.setOnClickListener((View.OnClickListener) this);
+        //nextPic.setOnClickListener((View.OnClickListener) this);
+        try{
+            responseJson = new JSONObject(newString).getJSONArray("response");
+            for(int i=0; i<responseJson.length(); i++){
+                JSONObject image = responseJson.getJSONObject(i);
+                String url = (String) image.get("result");
+                responseList.add(url);
+            }
+            ImageView resultPic = findViewById(R.id.proposal1);
+            ImageView resultPic2 = findViewById(R.id.proposal2);
+            ImageView resultPic3 = findViewById(R.id.proposal3);
+            ImageView initialPic = findViewById(R.id.answerLogo);
+
+
+            //new DownloadImageTask().execute(responseList.get(0));
+            Bitmap bmp;
+            byte[] byteArray = extras.getByteArray("image");
+            bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+            initialPic.setImageBitmap(bmp);
+
+            System.out.println(responseList);
+            new DownloadImageTask(resultPic).execute(responseList.get(0));
+            new DownloadImageTask(resultPic2).execute(responseList.get(1));
+            new DownloadImageTask(resultPic3).execute(responseList.get(2));
+
+        }
+        catch (JSONException e){
+            Log.d(e.toString(),"Error from catch");
+        }
 
         Bitmap bmp;
         //TextView textView = findViewById(R.id.information);
@@ -23,10 +70,9 @@ public class SearchPage extends Gallery {
         ImageView proposal1 = findViewById(R.id.proposal1);
         ImageView proposal2 = findViewById(R.id.proposal2);
         ImageView proposal3 = findViewById(R.id.proposal3);
-        Bundle extras = getIntent().getExtras();
-        /**DownloadImageTask picture1 = new DownloadImageTask(proposal1).execute("<url>");
-        DownloadImageTask picture2 = new DownloadImageTask(proposal2).execute("<url>");
-        DownloadImageTask picture3 = new DownloadImageTask(proposal3).execute("<url>");**/
+        //Bundle extras = getIntent().getExtras();
+
+
         // Ensuite, transformer en liste java pour avoir "resultat 1 ; score"
 
         /**String information="L'image correspond à : %s avec une probabilité de %i", logo, proba;
@@ -49,6 +95,7 @@ class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         String urldisplay = urls[0];
         Bitmap mIcon11 = null;
         try {
+
             InputStream in = new java.net.URL(urldisplay).openStream();
             mIcon11 = BitmapFactory.decodeStream(in);
         } catch (Exception e) {

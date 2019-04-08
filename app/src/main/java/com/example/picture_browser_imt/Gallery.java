@@ -23,6 +23,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.sql.SQLOutput;
 
 public class Gallery extends TakePicture {
 
@@ -53,8 +54,7 @@ public class Gallery extends TakePicture {
            public void onClick(View v) {
                Bitmap bitmap = ((BitmapDrawable) imageGallery.getDrawable()).getBitmap();
                 CharSequence base64String = ImageToBase64(bitmap);
-                CharSequence newBase64 = "data:image/jpeg:base64,/9j/"+base64String;
-               System.out.println(newBase64);
+                CharSequence newBase64 = "data:image/jpeg:base64,"+base64String;
 
                RequestParams param = new RequestParams();
 
@@ -67,19 +67,22 @@ public class Gallery extends TakePicture {
 
 
                // POST IMG
-               HttpUtils.post("LogoSearch", param, new JsonHttpResponseHandler() {
+               HttpUtils.post("LogoSearch/", param, new JsonHttpResponseHandler() {
+
                    public void onFailure(int statusCode, PreferenceActivity.Header[] headers, Throwable throwable, JSONObject errorResponse) {
                        // Toast.makeText(MainMenuPhoto.this, "l'API n'est pas accessible ...", Toast.LENGTH_LONG).show();
-                       Intent intent = new Intent(getBaseContext(), SearchPage.class);
-                       startActivity(intent);
+                       //Intent intent = new Intent(getBaseContext(), SearchPage.class);
+                       //startActivity(intent);
                    }
 
                    @Override
                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                        Log.d("API_response", "POST response:" + response);
                        try {
+                           System.out.println("THIS IS THE RESPONSE"+ response);
                            String search_id = (String) new JSONObject(response.toString()).get("id");
                            Log.d("API_response", "POST id de la ressource: " + search_id);
+                           System.out.print(response);
 
                            // GET IMG
                            HttpUtils.get("LogoSearch/GetImage?search_id=" + search_id, new RequestParams(), new JsonHttpResponseHandler() {
@@ -98,9 +101,10 @@ public class Gallery extends TakePicture {
                                    byte[] byteArray = bStream.toByteArray();
                                    System.out.println(byteArray);
                                    search_intent.putExtra("image", byteArray);
-
-                                   Log.e("API_response", "GET response" + response.toString());
-                                   search_intent.putExtra("response", response.toString());
+                                   //search_intent.putExtra("response", response.toString());
+                                   String response2=response.toString().replace("\\","");
+                                   Log.e("API_response", "GET response" + response2);
+                                   search_intent.putExtra("response", response2);
                                    startActivity(search_intent);
                                }
                            });
@@ -130,7 +134,7 @@ public class Gallery extends TakePicture {
 
     private CharSequence ImageToBase64 (Bitmap bitmap){
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
         byte[] byteArray = byteArrayOutputStream .toByteArray();
         CharSequence encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
         return encoded;
